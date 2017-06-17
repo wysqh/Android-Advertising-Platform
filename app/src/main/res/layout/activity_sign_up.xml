@@ -41,5 +41,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_button"/>
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="还没有账号？点击这里注册"
+            android:layout_gravity="bottom" />
     </LinearLayout>
 </LinearLayout>

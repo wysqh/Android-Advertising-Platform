@@ -20,9 +20,18 @@ import java.util.Map;
  */
 
 public class HttpUtils {
+    public final static String IP_ADDRESS = "http://172.30.194.231:8080";
+    public final static String BASE_URL = IP_ADDRESS;
+    public final static String USER_URL = IP_ADDRESS + "/users";
+    public final static String PRODUCT_URL = IP_ADDRESS + "/product";
+
     public static InputStream post(String path, Map<String, String> params){
         URL url = null;
-        byte[] data = getRequestData(params, "utf-8").toString().getBytes();
+        StringBuffer stringBuffer = getRequestData(params, "utf-8");
+        byte[] data = null;
+        if (stringBuffer != null) {
+            data = stringBuffer.toString().getBytes();
+        }
         try {
             url = new URL(path);
             Log.i("Http Utils", path);
@@ -38,14 +47,18 @@ public class HttpUtils {
             urlConnection.setRequestProperty("Content-Type",
                     "application/x-www-form-urlencoded");
             // 设置请求的头
-            urlConnection.setRequestProperty("Content-Length",
-                    String.valueOf(data.length));
+            if (data!=null) {
+                urlConnection.setRequestProperty("Content-Length",
+                        String.valueOf(data.length));
+            }
             // 设置请求的头
             urlConnection
                     .setRequestProperty("User-Agent",
                             "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0");
-            OutputStream out = urlConnection.getOutputStream();
-            out.write(data);
+            if (data != null) {
+                OutputStream out = urlConnection.getOutputStream();
+                out.write(data);
+            }
             urlConnection.connect();
 
             int response = urlConnection.getResponseCode();
@@ -65,6 +78,10 @@ public class HttpUtils {
     }
 
     public static StringBuffer getRequestData(Map<String, String> params, String encode) {
+        if (params == null) {
+            return null;
+        }
+
         StringBuffer stringBuffer = new StringBuffer();
         try {
             for (Map.Entry<String, String> entry : params.entrySet()){
