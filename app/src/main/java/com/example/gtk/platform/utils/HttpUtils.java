@@ -20,7 +20,7 @@ import java.util.Map;
  */
 
 public class HttpUtils {
-    public final static String IP_ADDRESS = "http://172.30.194.231:8080";
+    public final static String IP_ADDRESS = "http://10.0.0.22:8080";
     public final static String BASE_URL = IP_ADDRESS;
     public final static String USER_URL = IP_ADDRESS + "/users";
     public final static String PRODUCT_URL = IP_ADDRESS + "/product";

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Platform</string>
     <string name="user_name">用户名:</string>
-    <string name="user_pass">密&#160;&#160;&#160;&#160;码:</string>
+    <string name="user_pass">密&#160;&#160;码</string>
     <string name="user_hint">请输入用户名</string>
     <string name="pass_hint">请输入密码</string>
     <string name="login_button">登陆</string>

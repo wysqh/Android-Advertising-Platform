@@ -19,6 +19,7 @@ import com.example.gtk.platform.model.BaseResult;
 import com.example.gtk.platform.model.Product;
 import com.example.gtk.platform.model.UserInfo;
 import com.example.gtk.platform.utils.HttpUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
@@ -32,6 +33,7 @@ public class PurchaseActivity extends Activity {
     private EditText addressEditText;
     private EditText phoneEditText;
     private RadioGroup methodRadioGroup;
+    private SimpleDraweeView introView;
     private int selectedType;
     private int selectItem;
 
@@ -46,6 +48,7 @@ public class PurchaseActivity extends Activity {
         addressEditText = (EditText)findViewById(R.id.purchase_address);
         phoneEditText = (EditText)findViewById(R.id.purchase_phone);
         methodRadioGroup = (RadioGroup)findViewById(R.id.purchase_method);
+        introView = (SimpleDraweeView)findViewById(R.id.purchase_intro);
 
         new NetWorkTask().execute(name);
 
@@ -122,6 +125,7 @@ public class PurchaseActivity extends Activity {
             if(result == null)
                 return;
 
+            introView.setImageURI(result.getImage());
             titleTextView.setText(result.getTitle());
             priceTextView.setText(result.getPrice() + "RMB");
             selectItem = result.getId();

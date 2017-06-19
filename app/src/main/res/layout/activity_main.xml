@@ -16,7 +16,9 @@
                 android:id="@+id/sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="登陆" />
+                android:background="@drawable/round_radius"
+                android:text="登陆"
+                style="@style/loginFont"/>
             <TextView
                 android:id="@+id/user_info"
                 android:layout_width="wrap_content"
